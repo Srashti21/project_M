@@ -1,0 +1,27 @@
+<form  #form ="ngForm"  (ngSubmit)="form.valid && findMovieById(form)">
+    <div>
+        <h1>FIND Movie</h1>
+        <div>
+            <label>MovieID</label>
+            <input type="number" class="form-control" name="movieId" ngModel  #movieIdCtrl=ngModel required >
+            <div *ngIf="movieIdCtrl.errors!=null && movieIdCtrl.errors.required">
+                 required
+            </div>
+            
+        </div>
+        <br>
+        <br>
+    </div>
+    <button class="btn btn-success" type="submit">Find Movie</button>
+</form>
+
+<div *ngIf="foundStatus==='found'">
+    movieName= {{foundMovie.movieName}}
+    
+</div>
+
+<div *ngIf="foundStatus=='notfound'">
+    Movie not found !
+    </div>
+    
+    

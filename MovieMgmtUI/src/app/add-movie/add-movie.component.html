@@ -1,0 +1,100 @@
+<div>
+    <div class="container" style="margin-top: 70px; margin-left: 200px;">
+
+        <form #data="ngForm" (ngSubmit)="addMovie(data)">
+
+            <div>
+                <h1>ADD Movie</h1><br><br>
+                <label>Movie ID</label>
+                <input type="number" class="form-control" name="movieId" ngModel #movieIdCtrl=ngModel required
+                    length="2">
+                <div *ngIf="movieIdCtrl.errors!=null && movieIdCtrl.errors.required">
+                    Movie ID is required
+                </div>
+                <div *ngIf="movieIdCtrl.errors!=null && movieIdCtrl.errors.length">
+                    length should be 2
+                </div>
+            </div>
+            <br>
+            <div>
+                <label>Movie Name</label>
+                <input type="text" class="form-control" name="movieName" ngModel #movieNameCtrl=ngModel
+                    required>
+                <div *ngIf="movieNameCtrl.errors!=null && movieNameCtrl.errors.required">
+                   Movie Name is required
+                </div>
+            </div>
+
+            <br>
+            <div>
+                <label>Movie Genre</label>
+                <input type="text" class="form-control" name="movieGenre" ngModel
+                    #movieGenreCtrl=ngModel required>
+                <div *ngIf="movieGenreCtrl.errors!=null && movieGenreCtrl.errors.required">
+                    Genre is required
+                </div>
+            </div>
+            <br>
+            <div>
+                <label>Movie Director</label>
+                <input type="text" class="form-control" name="movieDirector" ngModel #movieDirectorCtrl=ngModel
+                    required>
+                <div *ngIf="movieDirectorCtrl.errors!=null && movieDirectorCtrl.errors.required">
+                    Director name is required
+                </div>
+            </div>
+            <br>
+
+            <div>
+                <label>Movie Length</label>
+                <input type="number" class="form-control" name="movieLength" ngModel
+                    #movieLengthCtrl=ngModel required>
+                <div *ngIf="movieLengthCtrl.errors!=null && movieLengthCtrl.errors.required">
+                    Length required
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label>Release date</label>
+                <input type="date" class="form-control" name="movieReleaseDate" ngModel #movieReleaseDateCtrl=ngModel required>
+                <div *ngIf="movieReleaseDateCtrl.errors!=null && movieReleaseDateCtrl.errors.required">
+                   Movie Release Date is required
+                </div>
+            
+                </div>
+            <br>
+            <div>
+                <label>Movie Language</label>
+                <input type="text" class="form-control" name="movieLanguage" ngModel #movieLanguageCtrl=ngModel
+                    required>
+                <div *ngIf="movieLanguageCtrl.errors!=null && movieLanguageCtrl.errors.required">
+                    Language is required
+                </div>
+            </div>
+            <br>
+            <div>
+                <button type="submit" class="btn btn-success">Add Movie</button>
+            </div>
+        </form>
+
+    </div>
+    <br>
+    <div *ngIf="added!==null">
+        <h3>Movie added</h3>
+        MovieId= {{added.movieId}}
+        MovieName= {{added.movieName}}
+        MovieDirector = {{added.movieDirector}}
+        MovieGenre = {{added.movieGenre}}
+        MovieLength = {{added.movieLength}}
+        MovieLanguage = {{added.movieLanguage}}
+        MovieReleaseDate={{added.movieReleaseDate}}
+    </div>
+
+    <br>
+    <br>
+
+
+
+
+
+</div>

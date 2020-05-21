@@ -1,0 +1,32 @@
+<p>Movie List and Delete Movie</p>
+<div  class="container">
+    <table class="table" border="1">   
+         <tr>
+        
+        <th>Movie ID </th>
+        <th>Movie Name </th>
+        <th>Movie Genre</th>
+        <th>Movie Director</th>
+        <th>Movie Language</th>
+        <th>Movie Length</th>
+        <th>Movie Release Date </th>
+    </tr>
+
+    <tr *ngFor="let movie of movies">
+        <td>{{movie.movieId}}</td>
+        <td>{{movie.movieName}}</td>
+        <td>{{movie.movieDirector}}</td>
+        <td>{{movie.movieGenre}}</td>
+        <td>{{movie.movieLength}}</td>
+        <td>{{movie.movieLanguage}}</td>
+        <td>{{movie.movieReleaseDate}}</td>
+<td>
+    <td><button class="btn btn-success"(click)="removeMovieById(movie.movieId)" >Remove Movie</button>
+</td>   
+</tr>
+
+
+</table>
+
+<br>
+<br>
