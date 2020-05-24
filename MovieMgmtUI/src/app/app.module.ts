@@ -8,13 +8,15 @@ import { AddMovieComponent } from './add-movie/add-movie.component';
 import { GetMovieComponent } from './get-movie/get-movie.component';
 import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
 import { movieService } from './service/movieService';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddMovieComponent,
     GetMovieComponent,
-    MoviedetailsComponent
+    MoviedetailsComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,

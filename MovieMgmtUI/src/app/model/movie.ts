@@ -1,21 +1,11 @@
-export class Movies{
+export class Movie{
     movieId : number;
-	 movieName : String;
-	 movieGenre : String;
-	 movieDirector : String;
-	 movieLength : Number;
-	 movieReleaseDate : Date;
-	 movieLanguage: String[];
+	 movieName : string;
+	 movieGenre : string;
+	 movieDirector : string;
+	 movieLength : number;
+	 movieReleaseDate : string;
+	 languages: string[];
 
-
-constructor(movieId : number, movieName : String,movieGenre : String,movieDirector : String,movieLength : number,movieReleaseDate : Date,movieLanguage: String[]){
-this.movieId=movieId;
-this.movieName=movieName;
-this.movieGenre=movieGenre;
-this.movieDirector=movieDirector;
-this.movieLanguage=movieLanguage;
-this.movieLength=movieLength;
-this.movieReleaseDate=movieReleaseDate;
-}
 
 }

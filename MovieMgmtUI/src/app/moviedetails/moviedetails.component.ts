@@ -1,48 +1,52 @@
 import { Component, OnInit } from '@angular/core';
-import { Movies } from '../model/movie';
+import { Movie } from '../model/movie';
 import { movieService } from '../service/movieService';
 import { Observable, ObservedValueOf } from 'rxjs';
 
 @Component({
-  selector: 'app-moviedetails',
+  selector: 'movies-detail',
   templateUrl: './moviedetails.component.html',
   styleUrls: ['./moviedetails.component.css']
 })
 export class MoviedetailsComponent implements OnInit {
 
-movies:Movies[]=[];
+movies:Movie[]=[];
 
 service:movieService;
 
-orderByField:string=null;
 
   constructor(service:movieService) { 
     this.service=service;
     
-    let observable:Observable<Movies[]>=this.service.fetchAllMovies();
-    observable.subscribe(
-      movie=>{
-        this.movies=movie;
-        console.log("inside success callback ="+this.movies.length);
-      },
-      err=>console.log(err)
-    );
-  
   }
 
   ngOnInit(): void {
+  
+    let observable:Observable<Movie[]>=this.service.fetchAllMovies();
+    observable.subscribe(
+      movies=>{
+        this.movies=movies;
+        for(let movie of movies){
+          console.log(movie.languages);
+        }
+        console.log("inside success callback ="+this.movies.length);
+      },
+      err=>console.log(err.error)
+    );
   }
 
   removeMovieById(movieId:number){
-    let result:Observable<boolean>=this.service.deleteMovie(movieId);
-result.subscribe(movie=>{
-  this.removeMovieById(movieId);
+    let result:Observable<string>=this.service.deleteMovie(movieId);
+    result.subscribe(movie=>{
+  this.removeLocalMovie(movieId);
 },err=>{
-  console.log("error in deleting movie = "+err);
+  console.log("error in deleting movie = "+err.message);
 })
   }
+
+
  
-  removeMovie(movieId:number){
+  removeLocalMovie(movieId:number){
     let foundIndex=-1;
     for(let i=0;i<this.movies.length;i++){
       let movie=this.movies[i];

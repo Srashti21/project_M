@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Movies } from '../model/movie'
+import { Movie } from '../model/movie'
   @Injectable()
   export class movieService{
     client:HttpClient ;
@@ -11,21 +11,23 @@ import { Movies } from '../model/movie'
 
     baseMovieUrl="http://localhost:8086/movies";
 
-    addMovie(movie:Movies):Observable<Movies>{
+    addMovie(movie:Movie):Observable<Movie>{
+      let text=JSON.stringify(movie);
+      console.log("text="+text);
         let url = this.baseMovieUrl+"/add";
-        let observable : Observable<Movies> = this.client.post<Movies>(url,movie);
+        let observable : Observable<Movie> = this.client.post<Movie>(url,movie);
         return observable;
     }
     
-    fetchAllMovies():Observable<Movies[]>{
+    fetchAllMovies():Observable<Movie[]>{
       let url = this.baseMovieUrl;
-      let observable : Observable<Movies[]>=this.client.get<Movies[]>(url);
+      let observable : Observable<Movie[]>=this.client.get<Movie[]>(url);
       return observable;
     }
     
-    getMovie(movieId:number):Observable<Movies>{
+    getMovie(movieId:number):Observable<Movie>{
       let url = this.baseMovieUrl+"/get/"+movieId;
-      let result:Observable<Movies> = this.client.get<Movies>(url);
+      let result:Observable<Movie> = this.client.get<Movie>(url);
       return result;
     }
 
@@ -33,7 +35,7 @@ import { Movies } from '../model/movie'
     
     deleteMovie(movieId:number){
       let url = this.baseMovieUrl+"/delete/"+movieId;
-      let result:Observable<boolean> = this.client.delete<boolean>(url);
+      let result:Observable<string> = this.client.delete(url,{responseType:'text'});
       return result;
     }
     

@@ -1,27 +1,54 @@
-<form  #form ="ngForm"  (ngSubmit)="form.valid && findMovieById(form)">
-    <div>
-        <h1>FIND Movie</h1>
+<h1 style="margin-bottom:30px">FIND Movie</h1>
+
+<form  #form ="ngForm"  (ngSubmit)="form.valid && findMovieById(form)" class="form-group">
         <div>
-            <label>MovieID</label>
-            <input type="number" class="form-control" name="movieId" ngModel  #movieIdCtrl=ngModel required >
-            <div *ngIf="movieIdCtrl.errors!=null && movieIdCtrl.errors.required">
+            <label for="movieid">MovieID</label>
+            <input type="number" class="form-control" id="movieid" name="movieId" ngModel  #movieIdCtrl=ngModel required >
+            <div *ngIf="movieIdCtrl.errors!=null && movieIdCtrl.errors.required" class="error">
                  required
             </div>
             
         </div>
-        <br>
-        <br>
-    </div>
     <button class="btn btn-success" type="submit">Find Movie</button>
 </form>
 
-<div *ngIf="foundStatus==='found'">
-    movieName= {{foundMovie.movieName}}
+<div *ngIf="foundStatus==='found'" style="margin-top:50px">
+    <div >
+      <b>  <label>Movie Id</label> </b>
+        {{movie.movieId}}
+    </div>
+
+    <div>
+    <b>   <label>Movie Name</label> </b>
+        {{movie.movieName}}
+    </div>
+    <div>
+        <b>
+        <label>Movie Director</label> </b>
+        {{movie.movieDirector}}
+
+    </div>
+    <div>
+     <b>  <label>Movie Genre</label> </b> 
+        {{movie.movieGenre}}
+    </div>
+    <div>
+     <b>   <label>Movie Length</label> </b>
+        {{movie.movieLength}}
+    </div>
+    <div>
+       <b> <label>Movie Language</label> </b>
+        {{movie.languages}}
+    </div>
+    <div>
+    <b>   <label>Movie Release Date</label>  </b>
+        {{movie.movieReleaseDate}}
+    </div>
     
 </div>
 
-<div *ngIf="foundStatus=='notfound'">
-    Movie not found !
-    </div>
+<div *ngIf="foundStatus==='notfound'" class="error">
+Movie not found !
+</div>
     
     

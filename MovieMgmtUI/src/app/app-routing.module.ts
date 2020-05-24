@@ -4,6 +4,7 @@ import { pathToFileURL } from 'url';
 import { AddMovieComponent } from './add-movie/add-movie.component';
 import { GetMovieComponent } from './get-movie/get-movie.component';
 import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 
 const routes: Routes = [
@@ -12,11 +13,15 @@ const routes: Routes = [
   component:AddMovieComponent
   },
   {
+   path:'welcome',
+   component:WelcomeComponent
+  },
+  {
     path:'get-movie',
     component:GetMovieComponent
   },
   {
-    path:'moivedetails',
+    path:'movies-detail',
     component:MoviedetailsComponent
   }
 ];
